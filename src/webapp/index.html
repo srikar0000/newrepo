@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Gold Rate Teller</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="live-rates">
+            <div class="tab active" data-purity="22K">
+                <h2>22 Karat Gold</h2>
+                <p class="price">₹<span id="price-22k"></span> / gram</p>
+            </div>
+            <div class="tab" data-purity="24K">
+                <h2>24 Karat Gold</h2>
+                <p class="price">₹<span id="price-24k"></span> / gram</p>
+            </div>
+            </div>
+
+        <div class="calculator">
+            <h2>Gold Price Calculator</h2>
+            <div class="input-group">
+                <label for="weightInput">Weight (in grams):</label>
+                <input type="number" id="weightInput" placeholder="Enter weight">
+            </div>
+            <div class="input-group">
+                <label>Purity:</label>
+                <div class="purity-options">
+                    <input type="radio" id="purity-22k" name="purity" value="22K" checked>
+                    <label for="purity-22k">22 Karat</label>
+                    <input type="radio" id="purity-24k" name="purity" value="24K">
+                    <label for="purity-24k">24 Karat</label>
+                </div>
+            </div>
+            <button onclick="calculateGoldPrice()">Calculate Price</button>
+            <div class="result">
+                <p>Calculated Price: ₹<span id="calculatedPrice">0.00</span></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
