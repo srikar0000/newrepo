@@ -10,9 +10,12 @@
     <packaging>war</packaging>
 
     <properties>
-        <maven.compiler.source>17</maven.compiler.source> <maven.compiler.target>17</maven.compiler.target>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <tomcat.version>10.1.19</tomcat.version> <servlet.api.version>6.0.0</servlet.api.version> </properties>
+        <tomcat.version>10.1.19</tomcat.version>
+        <servlet.api.version>6.0.0</servlet.api.version>
+    </properties>
 
     <build>
         <finalName>goldrate</finalName>
@@ -20,7 +23,8 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.11.0</version> <configuration>
+                <version>3.11.0</version>
+                <configuration>
                     <source>${maven.compiler.source}</source>
                     <target>${maven.compiler.target}</target>
                 </configuration>
@@ -28,44 +32,41 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
-                <version>3.4.0</version> <configuration>
+                <version>3.4.0</version>
+                <configuration>
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.tomcat.maven</groupId>
                 <artifactId>tomcat7-maven-plugin</artifactId>
-                <version>2.2</version> <configuration>
+                <version>2.2</version>
+                <configuration>
                     <path>/${project.build.finalName}</path>
                     <port>8080</port>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.8</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>report</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
-<build>
-    <plugins>
-             
-        <plugin>
-            <groupId>org.jacoco</groupId>
-            <artifactId>jacoco-maven-plugin</artifactId>
-            <version>0.8.8</version>
-            <executions>
-                <execution>
-                    <goals>
-                        <goal>prepare-agent</goal>
-                    </goals>
-                </execution>
-                <execution>
-                    <id>report</id>
-                    <phase>test</phase>
-                    <goals>
-                        <goal>report</goal>
-                    </goals>
-                </execution>
-            </executions>
-        </plugin>
-    </plugins>
-</build>
 
     <dependencies>
         <dependency>
@@ -74,5 +75,5 @@
             <version>${servlet.api.version}</version>
             <scope>provided</scope>
         </dependency>
-        </dependencies>
+    </dependencies>
 </project>
